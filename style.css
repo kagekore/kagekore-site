@@ -1,0 +1,413 @@
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: sans-serif;
+  padding: 2rem;
+}
+
+h1 {
+  color: #000;
+  font-size: 2.5rem;
+}
+
+p {
+  font-size: 1.2rem;
+}
+
+header {
+  background-color: #222;
+  padding: 20px;
+  text-align: center;
+}
+
+.logo {
+  color: white;
+  font-size: 2.5em;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  padding: 0 2rem;
+}
+
+.sidebar {
+  width: 200px;
+  flex-shrink: 0;
+  background-color: #f4f4f4;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.sidebar h2 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 0.8rem;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #333;
+}
+
+.sidebar a:hover {
+  text-decoration: underline;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.search-box {
+  display: flex;
+  margin: 2rem 0;
+}
+
+.search-box input[type="text"] {
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+}
+
+.search-box button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+
+.search-box button:hover {
+  background-color: #555;
+}
+
+.material img {
+  width: 200px;
+  height: auto;
+  display: block;
+  margin: 10px;
+}
+
+#material-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.material {
+  width: 200px;
+  text-align: center;
+}
+
+.material img {
+  width: 100%;
+  height: auto;
+}
+
+.material-card {
+  border: 1px solid #ccc;
+  padding: 8px;
+  margin: 8px;
+  display: inline-block;
+  width: 180px;
+  text-align: center;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.material-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.material-title {
+  font-weight: bold;
+  margin: 6px 0;
+}
+
+.material-tags {
+  font-size: 12px;
+  color: #666;
+}
+
+#tag-filters a {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.pagination {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.pagination button {
+  margin: 0 5px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.global-header {
+  background-color: #222;
+  padding: 10px 0 15px;
+  text-align: center;
+}
+
+.global-header .logo {
+  color: #fff;
+  font-size: 2.5em;
+  margin: 0 0 10px;
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links li {
+  display: inline-block;
+  margin: 0 15px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* === モーダルUI調整 === */
+#modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  overflow: auto;
+}
+
+.modal-inner {
+  background: #fff;
+  width: 90%;
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column; /* ← タイトルを上に表示するために column に変更 */
+  gap: 1rem;
+}
+
+/* タイトル部分 */
+.modal-header {
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+  color: #222;
+}
+
+/* 中身の左右分割レイアウト */
+.modal-content-flex {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+/* 左側：SVGプレビュー */
+.modal-preview {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f9f9f9;
+  padding: 1rem;
+  overflow: auto;
+  max-height: 80vh;
+}
+
+/* 右側：カラーや操作ボタン */
+.modal-controls {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow-y: auto;
+}
+
+/* カラー選択部 */
+.color-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.color-controls input[type="color"],
+.color-controls input[type="text"] {
+  padding: 0.2rem;
+  font-size: 1rem;
+}
+
+/* カラーサンプル */
+#colorSamples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+#colorSamples button,
+.color-set button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0;           /* ← 追加：余白をゼロに */
+  flex-shrink: 0;       /* ← 追加：縮小されないように */
+}
+
+.color-group {
+  margin-bottom: 1rem;
+}
+
+.color-group-title {
+  font-size: 0.95rem;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  color: #333;
+}
+
+.color-set {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* 保存ボタン */
+.modal-buttons {
+  margin-top: auto;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.modal-buttons button {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border: none;
+  background-color: #333;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-buttons button:hover {
+  background-color: #555;
+}
+
+/* 閉じるボタン */
+#modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #aaa;
+  color: #fff;
+  border: none;
+  padding: 0.3rem 0.7rem;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* SVGサイズ調整 */
+#modal-content svg {
+  max-height: 60vh;
+  width: auto;
+  height: auto;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.fav-button {
+  background: none;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  transition: color 0.2s;
+}
+
+.fav-button.favorited {
+  color: red; /* お好みで #ff3366 や #e60073 でもOK */
+}
+
+.favorite-items,
+.recent-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.favorite-items .material-card,
+.recent-items .material-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.5rem;
+  width: 160px;
+  text-align: center;
+  background: #fff;
+  transition: box-shadow 0.2s;
+}
+
+.favorite-items .material-card img,
+.recent-items .material-card img {
+  width: 100%;
+  height: auto;
+}
+
+.favorite-items .material-card:hover,
+.recent-items .material-card:hover {
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+
+.more-favorite-button {
+  margin-top: 0.5rem;
+  padding: 0.3rem 1rem;
+  font-size: 0.9rem;
+  background: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}

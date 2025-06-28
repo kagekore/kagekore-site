@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>カゲコレ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="global-header">
+  <h1 class="logo">カゲコレ</h1>
+  <nav>
+    <ul class="nav-links">
+      <li><a href="index.html">トップ</a></li>
+      <li><a href="about.html">カゲコレとは</a></li>
+      <li><a href="terms.html">利用規約</a></li>
+      <li><a href="material.html">素材一覧</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="container">
+  <nav class="sidebar">
+    <h2>カテゴリー</h2>
+    <div id="tag-filters">
+      <a class="tag-btn" href="material.html?tag=ビジネス">ビジネス</a>
+      <a class="tag-btn" href="material.html?tag=スポーツ">スポーツ</a>
+      <a class="tag-btn" href="material.html?tag=音楽">音楽</a>
+      <a class="tag-btn" href="material.html?tag=エフェクト">エフェクト</a>
+      <a class="tag-btn" href="material.html?tag=男性">男性</a>
+      <a class="tag-btn" href="material.html?tag=女性">女性</a>
+      <a class="tag-btn" href="material.html?tag=男の子">男の子</a>
+      <a class="tag-btn" href="material.html?tag=女の子">女の子</a>
+      <a class="tag-btn" href="material.html?tag=複数人">複数人</a>
+      <a class="tag-btn" href="material.html?tag=アイテム">アイテム</a>
+      <a class="tag-btn" href="material.html?tag=ALL">すべて表示</a>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <!-- 🔍 検索フォーム -->
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="キーワードで検索">
+      <button id="searchBtn">検索</button>
+    </div>
+
+    <!-- 素材一覧 -->
+    <section id="material-list">
+      <!-- JSで素材を自動生成して並べる -->
+    </section>
+  </main>
+</div>
+
+      <section id="favorites">
+        <h2>お気に入り素材</h2>
+        <div id="favorites-list"></div>
+        <a href="favorites.html" class="more-link">もっと見る</a>
+      </section>
+
+
+
+
+<!-- モーダル本体 -->
+<div id="modal" class="modal" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999;">
+  <div class="modal-inner">
+    
+   <!-- モーダルヘッダー（タイトル）を .modal-inner の中に最初に置く -->
+    <div class="modal-header">
+      <h2 id="modalTitle" class="modal-title">素材タイトル</h2>
+    </div>
+
+    <!-- 中身は左右分割 -->
+
+    <div class="modal-content-flex">
+      <!-- 左：プレビュー -->
+      <div class="modal-preview" id="modal-content"></div>
+
+      <!-- 右：カラーと操作 -->
+      <div class="modal-controls">
+        <div class="modal-tools">
+          <label for="colorPicker">色を選ぶ：</label>
+          <input type="color" id="colorPicker" value="#000000">
+          <input type="text" id="colorHex" value="#000000" maxlength="7">
+        </div>
+
+        <div class="color-samples">
+          <div class="color-samples">
+  <label>カラーサンプル：</label>
+
+  <div class="color-group">
+    <div class="color-group-title">代表色</div>
+    <div class="color-set">
+      <button style="background:#000000" title="黒"></button>
+      <button style="background:#ffffff" title="白"></button>
+      <button style="background:#ff0000" title="赤"></button>
+      <button style="background:#00ff00" title="緑"></button>
+      <button style="background:#0000ff" title="青"></button>
+    </div>
+  </div>
+
+  <div class="color-group">
+    <div class="color-group-title">ビジネスカラー</div>
+    <div class="color-set">
+      <button style="background:#007bff" title="ビジネスブルー"></button>
+      <button style="background:#0056b3" title="深い青"></button>
+      <button style="background:#28a745" title="ビジネスグリーン"></button>
+      <button style="background:#6c757d" title="グレー"></button>
+      <button style="background:#343a40" title="ダークグレー"></button>
+    </div>
+  </div>
+
+  <div class="color-group">
+    <div class="color-group-title">ナチュラルカラー</div>
+    <div class="color-set">
+      <button style="background:#a3d9a5" title="葉っぱの緑"></button>
+      <button style="background:#ffe4b5" title="ベージュ"></button>
+      <button style="background:#f4a460" title="サンドブラウン"></button>
+      <button style="background:#deb887" title="ナチュラルウッド"></button>
+      <button style="background:#c0c0c0" title="シルバー"></button>
+    </div>
+  </div>
+
+  <div class="color-group">
+    <div class="color-group-title">SNSカラー</div>
+    <div class="color-set">
+      <button style="background:#1da1f2" title="Twitterブルー"></button>
+      <button style="background:#e1306c" title="Instagramピンク"></button>
+      <button style="background:#010101" title="TikTokブラック"></button>
+    </div>
+  </div>
+</div>
+
+        <div class="modal-buttons">
+          <button id="downloadPngBtn">PNGで保存</button>
+          <button id="downloadBtn">SVGで保存</button>
+        </div>
+      </div>
+    </div>
+
+    <button id="modal-close" style="position: absolute; top: 10px; right: 10px;">閉じる</button>
+  </div>
+</div>
+
+
+
+  <script src="materials.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
