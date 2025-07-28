@@ -309,17 +309,39 @@ function renderFavoritesSection() {
   container.innerHTML = '<h3>お気に入り素材</h3>';
   const list = document.createElement('div');
   list.className = 'favorite-items';
+
   favs.slice(0, 4).forEach(item => {
     const div = document.createElement('div');
     div.className = 'material-card';
+    div.dataset.tags = item.tags.join(', ');
+
     const img = document.createElement('img');
     img.src = item.file;
     img.alt = item.title;
-    img.setAttribute('data-svg', item.svg);
+    img.setAttribute('data-svg', item.svg || '');
     img.addEventListener('click', () => openModal(img));
+
+    const title = document.createElement('p');
+    title.textContent = item.title;
+    title.className = 'material-title';
+
+    const tags = document.createElement('p');
+    tags.textContent = item.tags.join(', ');
+    tags.className = 'material-tags';
+
+    const favBtn = document.createElement('button');
+    favBtn.className = 'fav-button favorited';
+    favBtn.textContent = '♡';
+    favBtn.onclick = () => toggleFavorite(item);
+
     div.appendChild(img);
+    div.appendChild(title);
+    div.appendChild(tags);
+    div.appendChild(favBtn);
+
     list.appendChild(div);
   });
+
   container.appendChild(list);
 
   const more = document.createElement('button');
