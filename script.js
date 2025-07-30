@@ -97,7 +97,7 @@ function renderMaterials(items) {
 
     const favBtn = document.createElement('button');
     favBtn.className = 'fav-button';
-    favBtn.textContent = '♡';
+    favBtn.textContent = '♥';
     favBtn.onclick = () => toggleFavorite(item);
     if (getFavorites().some(f => f.title === item.title)) {
       favBtn.classList.add('favorited');
@@ -141,7 +141,7 @@ function renderFavoritesPage() {
 
     const favBtn = document.createElement('button');
     favBtn.className = 'fav-button favorited';
-    favBtn.textContent = '♡';
+    favBtn.textContent = '♥';
     favBtn.onclick = () => toggleFavorite(item);
 
     div.appendChild(img);
@@ -331,7 +331,7 @@ function renderFavoritesSection() {
 
     const favBtn = document.createElement('button');
     favBtn.className = 'fav-button favorited';
-    favBtn.textContent = '♡';
+    favBtn.textContent = '♥';
     favBtn.onclick = () => toggleFavorite(item);
 
     div.appendChild(img);

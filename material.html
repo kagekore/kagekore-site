@@ -7,14 +7,16 @@
 </head>
 <body>
 
-<header class="global-header">
-  <h1 class="logo">カゲコレ</h1>
+ <header class="global-header">
+   <a href="index.html">
+    <img src="icon/logo.svg" alt="カゲコレ ロゴ" class="site-logo">
+  </a>
   <nav>
     <ul class="nav-links">
-      <li><a href="index.html">トップ</a></li>
-      <li><a href="about.html">カゲコレとは</a></li>
+     <li><a href="about.html">カゲコレとは</a></li>
       <li><a href="terms.html">利用規約</a></li>
       <li><a href="material.html">素材一覧</a></li>
+      <li><a href="favorites.html">お気に入り</a></li>
     </ul>
   </nav>
 </header>
@@ -67,14 +69,17 @@
     <section id="material-list">
       <!-- JSで素材を自動生成して並べる -->
     </section>
-  </main>
-</div>
-
-      <section id="favorites">
+     <section id="favorites">
+          <div class="section-container">
         <h2>お気に入り素材</h2>
         <div id="favorites-list"></div>
         <a href="favorites.html" class="more-link">もっと見る</a>
+        </div>
       </section>
+  </main>
+</div>
+
+   
 
 
 

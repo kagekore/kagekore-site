@@ -1,5 +1,5 @@
 body {
-  background-color: #fff;
+  background-color: #f5f5f5;
   color: #333;
   font-family: sans-serif;
   padding: 2rem;
@@ -15,15 +15,16 @@ p {
 }
 
 header {
-  background-color: #222;
-  padding: 20px;
+  background-color: #333;
+  padding: 20px 2rem;  /* ← ここを修正！ 上下20px、左右2remに */
   text-align: center;
+      max-width: 1200px;  /* ★最大幅を指定 */
+  margin: 0 auto;     /* ★中央寄せ */
 }
 
-.logo {
-  color: white;
-  font-size: 2.5em;
-  margin: 0;
+.site-logo {
+  height: 120px; /* ロゴの高さ（好みに応じて変更OK） */
+  filter: invert(1); /* 白く反転 */
 }
 
 .container {
@@ -31,15 +32,18 @@ header {
   flex-direction: row;
   gap: 2rem;
   padding: 0 2rem;
+    max-width: 1200px;  /* ★最大幅を指定 */
+  margin: 0 auto;     /* ★中央寄せ */
 }
 
 .sidebar {
   width: 200px;
   flex-shrink: 0;
-  background-color: #f4f4f4;
+  background-color: #e3e3e3;
   padding: 1rem;
-  border-radius: 5px;
-}
+  margin: 0;  
+  border-radius: 0;
+ }
 
 .sidebar h2 {
   font-size: 1.3rem;
@@ -127,11 +131,13 @@ header {
   flex-direction: column;
   justify-content: space-between;
   width: 180px;
-  height: 320px; /* ← 高さを固定 */
+  height: 240px; /* ← 少しだけ縦を縮めた */
   text-align: center;
   border-radius: 6px;
   background: #fff;
   box-sizing: border-box;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: relative; /* ← ★お気に入りボタンを重ねるため必要！ */
 }
 
 .material-card img {
@@ -147,12 +153,14 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: bold;
   font-size: 14px;
   line-height: 1.4;
   padding: 0 4px;
 }
 
 .material-tags {
+   display: none;
   font-size: 12px;
   color: #888;
   margin: 4px 0;
@@ -370,17 +378,25 @@ body.modal-open {
 }
 
 .fav-button {
-  background: none;
+  position: absolute;          /* ← 素材カード内で重ねるために必要 */
+  bottom: 8px;                 /* ← 下からの位置調整 */
+  right: 8px;                  /* ← 右からの位置調整 */
+  background: #fff;            /* ← 白背景に変更してカードと調和 */
   border: 1px solid #ccc;
   cursor: pointer;
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
+  padding: 0.3rem 0.5rem;
+  border-radius: 50%;          /* ← 丸型に */
   font-size: 1.2rem;
-  transition: color 0.2s;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2); /* 軽い影で浮かせる */
+}
+
+.fav-button:hover {
+  background: #eee;
 }
 
 .fav-button.favorited {
-  color: red; /* お好みで #ff3366 や #e60073 でもOK */
+  color: red;
 }
 
 .favorite-items,
@@ -400,17 +416,46 @@ body.modal-open {
 }
 
 .more-favorite-button {
-  margin-top: 0.5rem;
-  padding: 0.3rem 1rem;
-  font-size: 0.9rem;
-  background: #f5f5f5;
-  border: 1px solid #ccc;
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #333;
+  background-color: #fff;
+  color: #333;
+  text-decoration: none;
   border-radius: 4px;
-  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.more-favorite-button:hover {
+  background-color: #f0f0f0;
 }
 
 .material-card:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transform: translateY(-2px);
   transition: all 0.2s ease;
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  background: rgba(255, 0, 0, 0.1); /* ← 一時的に背景色つけて確認 */
+}
+
+.more-link {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #333;
+  background-color: #fff;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.more-link:hover {
+  background-color: #f0f0f0;
 }
