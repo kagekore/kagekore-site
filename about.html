@@ -2,18 +2,21 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>カゲコレ</title>
+  <meta name="google-site-verification" content="1q5jrQCKitsrR_hK7hwyP1Ls2ybDdVLFYTtQhegshvQ">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
- <header class="global-header">
+  <header class="global-header">
    <a href="index.html">
     <img src="icon/logo.svg" alt="カゲコレ ロゴ" class="site-logo">
   </a>
   <nav>
+    <button id="menu-toggle" class="menu-toggle"></button>
     <ul class="nav-links">
-     <li><a href="about.html">カゲコレとは</a></li>
+      <li><a href="about.html">カゲコレとは</a></li>
       <li><a href="terms.html">利用規約</a></li>
       <li><a href="material.html">素材一覧</a></li>
       <li><a href="favorites.html">お気に入り</a></li>
@@ -23,6 +26,16 @@
 
   <div class="container">
     <nav class="sidebar">
+
+  <!-- ▼ ここがナビエリア（新規追加） -->
+<div class="sidebar-top">
+    <ul>
+      <li><a href="about.html">カゲコレとは</a></li>
+      <li><a href="terms.html">利用規約</a></li>
+      <li><a href="material.html">素材一覧</a></li>
+      <li><a href="favorites.html">お気に入り</a></li>
+    </ul>
+  </div>
 
 <!-- サイドバーSNSブロック -->
 <h2>SNS</h2>
@@ -95,6 +108,7 @@
       </section>
     </main>
   </div>
-
+  <script src="materials.js" defer></script> <!-- materials を使うなら -->
+  <script src="script.js" defer></script>
 </body>
 </html>

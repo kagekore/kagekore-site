@@ -107,11 +107,14 @@ header {
   margin: 10px;
 }
 
-#material-list {
+#material-list,
+#favorites-list  {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
 }
+
+
 
 .material {
   width: 200px;
@@ -239,7 +242,12 @@ header {
   display: flex;
   flex-direction: column; /* ← タイトルを上に表示するために column に変更 */
   gap: 1rem;
+  
+  /* 追加ここから↓ */
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
+
 
 /* タイトル部分 */
 .modal-header {
@@ -441,7 +449,6 @@ body.modal-open {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
-  background: rgba(255, 0, 0, 0.1); /* ← 一時的に背景色つけて確認 */
 }
 
 .more-link {
@@ -458,4 +465,262 @@ body.modal-open {
 
 .more-link:hover {
   background-color: #f0f0f0;
+}
+/* ========== PC（デフォルト）設定 ========== */
+.menu-toggle {
+  display: none;
+}
+
+.sidebar {
+  display: block;
+}
+
+.sidebar-top {
+  display: none;
+}
+
+
+
+/* ========== スマホ（768px以下） ========== */
+@media screen and (max-width: 768px) {
+  .nav-links { display: none; }
+
+  body { padding: 20px 1rem; }
+
+  .container,
+  .section-container { padding: 0; }
+
+  header { padding: 10px 1rem; }
+
+  .global-header {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .global-header .site-logo {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 15px;
+    left: 10px;
+    z-index: 1001;
+    width: 48px;
+    height: 48px;
+    background-color: #fff;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    cursor: pointer;
+  }
+  .menu-toggle::before {
+    content: "≡";
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    line-height: 1;
+  }
+
+  .sidebar {
+    display: none;
+    position: fixed;
+    top: 40px;
+    left: 0;
+    width: 160px;
+    height: 100%;
+    background: #e3e3e3;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+    padding: 1rem;
+    z-index: 1000;
+    overflow-y: auto;
+  }
+  .sidebar.active { display: block; }
+
+  .sidebar-top {
+    display: block;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #ccc;
+  }
+
+  /* 2列グリッド（両方に同一指定） */
+  #material-list,
+  #favorites-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    padding: 0 8px;
+    box-sizing: border-box;
+  }
+
+  /* 2つのリストの“中だけ”上書き（他エリアに影響させない） */
+  #material-list .material,
+  #favorites-list .material,
+  #material-list .material-card,
+  #favorites-list .material-card {
+    width: 100%;
+    max-width: 100%;
+    height: auto;     /* PC用の固定240pxを無効化 */
+    margin: 0;        /* 余白はgapに任せる */
+    padding: 8px;
+    box-sizing: border-box;
+  }
+
+  #material-list img,
+  #favorites-list img {
+    width: 100%;
+    height: auto;     /* 比率維持で縮む */
+    max-height: 120px;/* 必要なら 110〜140 に微調整 */
+    object-fit: contain;
+    display: block;
+  }
+
+  /* タイトルだけ軽く縮める（任意） */
+  #material-list .material-title,
+  #favorites-list .material-title {
+    font-size: 0.9rem;
+  }
+
+
+  /* デスクトップの固定幅を打ち消し、カードを列幅いっぱいに */
+  .material { width: auto; }
+
+  .material,
+  .material-card {
+    width: 100%;
+    max-width: 100%;
+    height: auto;            /* 高さ固定を解除（必要なら後で値を戻してOK） */
+    margin: 0;               /* 余白はgapに任せる */
+    padding: 8px;
+    box-sizing: border-box;
+  }
+
+  .material-card img,
+  .material img {
+    width: 100%;
+    height: auto;            /* 比率維持で縮む */
+    max-height: 120px;       /* 収まりが悪ければ 110〜140px で微調整 */
+    object-fit: contain;
+    display: block;
+  }
+
+  .material-title { font-size: 0.9rem; }
+
+  /* ごく僅かな横スクロール対策（念のため） */
+  html, body { overflow-x: hidden; }
+
+/* ===== モーダル部分（元のまま） ===== */
+.modal-content {
+  max-width: 95%;
+  width: auto;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.modal-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modal-image {
+  max-width: 100%;
+  height: auto;
+  text-align: center;
+}
+
+.modal-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.modal-controls label,
+.modal-controls input,
+.modal-controls .color-sample {
+  width: 100%;
+}
+
+.color-sample {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.color-sample div {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+}
+
+.modal-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.download-buttons button {
+  width: 100%;
+  font-size: 1rem;
+}
+
+.modal-tools {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+}
+
+.modal-tools label {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.modal-tools input[type="color"],
+.modal-tools input[type="text"] {
+  width: 45%;
+  padding: 0.4rem;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.modal-controls {
+  padding: 0 1rem;
+}
+
+.modal-tools label,
+.modal-tools input {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+  .modal-content-flex {
+    flex-direction: column;
+  }
+
+  .modal-preview {
+    max-height: none;
+    height: auto;
+  }
+
+  .modal-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .modal-buttons button {
+    width: 100%;
+    font-size: 1rem;
+  }
+}
 }
